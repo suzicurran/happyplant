@@ -23,10 +23,10 @@ attr_reader :center_x, :center_y
   end
 
   def update
-    @center_x = @x + (@width * @scalex * 0.5)
-    @center_y = @y + (@height * @scaley * 0.5)
     @x += rand(-5..5)
     @y += rand(-5..5)
+    @center_x = @x + (@width * @scalex * 0.5)
+    @center_y = @y + (@height * @scaley * 0.5)
     @frame_count += 1
   end
 
