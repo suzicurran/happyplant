@@ -4,13 +4,13 @@ class Water
   def initialize
     @x = 0
     @y = 0
-    @z = 0
-    @scalex = 0.5
-    @scaley = 0.5
+    @z = 1
+    @scalex = 1
+    @scaley = 1
     @image = Gosu::Image.new("water.png")
     @height = @image.height
     @width = @image.width
-    @speed = 2
+    @speed = 3 #should be divisible by 3
   end
 
   def draw
@@ -18,7 +18,19 @@ class Water
   end
 
   def update
-    if Gosu::button_down? Gosu::KbLeft
+    if Gosu::button_down? Gosu::KbLeft and Gosu::button_down? Gosu::KbUp
+      @x -= (@speed / 3 * 2)
+      @y -= (@speed / 3 * 2)
+    elsif Gosu::button_down? Gosu::KbLeft and Gosu::button_down? Gosu::KbDown
+      @x -= (@speed / 3 * 2)
+      @y += (@speed / 3 * 2)
+    elsif Gosu::button_down? Gosu::KbRight and Gosu::button_down? Gosu::KbUp
+      @x += (@speed / 3 * 2)
+      @y -= (@speed / 3 * 2)
+    elsif Gosu::button_down? Gosu::KbRight and Gosu::button_down? Gosu::KbDown
+      @x += (@speed / 3 * 2)
+      @y += (@speed / 3 * 2)
+    elsif Gosu::button_down? Gosu::KbLeft
       @x -= @speed
     elsif Gosu::button_down? Gosu::KbRight
       @x += @speed
