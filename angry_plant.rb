@@ -7,8 +7,8 @@ attr_reader :center_x, :center_y
     @z = 0
     @scalex = 0.1
     @scaley = 0.1
-    @AngryPlant1 = Gosu::Image.new("angryplant_1.png")
-    @AngryPlant2 =Gosu::Image.new("angryplant_2.png")
+    @AngryPlant1 = Gosu::Image.new("images/angryplant_1.png")
+    @AngryPlant2 =Gosu::Image.new("images/angryplant_2.png")
     @height = @AngryPlant2.height
     @width = @AngryPlant2.width
 

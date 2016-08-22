@@ -2,7 +2,7 @@ class HappyPlant
 
   def initialize
     @plant_z = 0
-    @image = Gosu::Image.new("plant.png")
+    @image = Gosu::Image.new("images/plant.png")
     @height = @image.height
     @width = @image.width
   end
