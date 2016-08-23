@@ -1,14 +1,16 @@
 class HappyPlant
 
   def initialize
-    @plant_z = 0
-    @image = Gosu::Image.new("images/plant.png")
+    @z = 1
+    @scalex = 0.1
+    @scaley = 0.1
+    @image = Gosu::Image.new("images/happyplant.png")
     @height = @image.height
     @width = @image.width
   end
 
   def draw(angry_plant)
-    @image.draw((angry_plant.center_x - (@width * 0.5)), (angry_plant.center_y - (@height * 0.5)), @plant_z)
+    @image.draw((angry_plant.angry_x), (angry_plant.angry_y), @z, @scalex, @scaley)
   end
 
   def update
