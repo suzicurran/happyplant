@@ -1,5 +1,5 @@
 class AngryPlant
-attr_reader :angry_x, :angry_y, :center_x, :center_y, # :ishappy
+attr_reader :angry_x, :angry_y, :center_x, :center_y # :ishappy
 
   def initialize
     @frame_count = 0
@@ -8,8 +8,8 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y, # :ishappy
     @z = 1
     @scalex = 0.1
     @scaley = 0.1
-    @AngryPlant1 = Gosu::Image.new("angryplant_1.png")
-    @AngryPlant2 =Gosu::Image.new("angryplant_2.png")
+    @AngryPlant1 = Gosu::Image.new("images/angryplant_1.png")
+    @AngryPlant2 =Gosu::Image.new("images/angryplant_2.png")
     @height = @AngryPlant2.height
     @width = @AngryPlant2.width
     @ishappy = false

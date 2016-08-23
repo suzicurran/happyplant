@@ -7,7 +7,7 @@ class Water
     @z = 1
     @scalex = 1
     @scaley = 1
-    @image = Gosu::Image.new("water.png")
+    @image = Gosu::Image.new("images/water.png")
     @height = @image.height
     @width = @image.width
     @speed = 3 #should be divisible by 3

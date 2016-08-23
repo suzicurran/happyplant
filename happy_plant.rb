@@ -4,7 +4,7 @@ class HappyPlant
     @z = 1
     @scalex = 0.1
     @scaley = 0.1
-    @image = Gosu::Image.new("happyplant.png")
+    @image = Gosu::Image.new("images/happyplant.png")
     @height = @image.height
     @width = @image.width
   end
