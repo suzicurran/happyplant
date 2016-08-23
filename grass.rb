@@ -1,7 +1,7 @@
 class Grass
 
 	def initialize
-		@image = Gosu::Image.new("grass.png")
+		@image = Gosu::Image.new("images/grass.png")
 	    @height = @image.height
     	@width = @image.width
     	@rowcount = 0
@@ -19,7 +19,7 @@ class Grass
 			end
 			@columncount = 0
 			@rowcount += 1
-		end	
+		end
 
    	end
 

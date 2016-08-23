@@ -1,5 +1,5 @@
 class AngryPlant
-attr_reader :angry_x, :angry_y, :center_x, :center_y, # :ishappy
+attr_reader :angry_x, :angry_y, :center_x, :center_y # :ishappy
 
   def initialize
     @frame_count = 0
