@@ -11,6 +11,7 @@ class Water
     @height = @image.height
     @width = @image.width
     @speed = 3 #should be divisible by 3
+    @diagonal_pace = @speed / 3 * 2
   end
 
   def draw
@@ -19,17 +20,17 @@ class Water
 
   def update
     if Gosu::button_down? Gosu::KbLeft and Gosu::button_down? Gosu::KbUp
-      @x -= (@speed / 3 * 2)
-      @y -= (@speed / 3 * 2)
+      @x -= @diagonal_pace
+      @y -= @diagonal_pace
     elsif Gosu::button_down? Gosu::KbLeft and Gosu::button_down? Gosu::KbDown
-      @x -= (@speed / 3 * 2)
-      @y += (@speed / 3 * 2)
+      @x -= @diagonal_pace
+      @y += @diagonal_pace
     elsif Gosu::button_down? Gosu::KbRight and Gosu::button_down? Gosu::KbUp
-      @x += (@speed / 3 * 2)
-      @y -= (@speed / 3 * 2)
+      @x += @diagonal_pace
+      @y -= @diagonal_pace
     elsif Gosu::button_down? Gosu::KbRight and Gosu::button_down? Gosu::KbDown
-      @x += (@speed / 3 * 2)
-      @y += (@speed / 3 * 2)
+      @x += @diagonal_pace
+      @y += @diagonal_pace
     elsif Gosu::button_down? Gosu::KbLeft
       @x -= @speed
     elsif Gosu::button_down? Gosu::KbRight
