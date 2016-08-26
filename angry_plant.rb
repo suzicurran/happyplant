@@ -3,8 +3,8 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y # :ishappy
 
   def initialize
     @frame_count = 0
-    @x = 240
-    @y = 240
+    @x = 20
+    @y = 20
     @z = 1
     @scalex = 0.1
     @scaley = 0.1
@@ -28,11 +28,25 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y # :ishappy
       @x += rand(-5..5)
       @y += rand(-5..5)
     end
+    @frame_count += 1
+    
     @center_x = @x + (@width * @scalex * 0.5)
     @center_y = @y + (@height * @scaley * 0.5)
     @angry_x = @x
     @angry_y = @y
-    @frame_count += 1
+
+    if @x < 0
+      @x = 0
+    end
+    if @y < 0
+      @y = 0
+    end
+    if @x > MyWindow::WIDTH - (@width * @scalex)
+      @x = MyWindow::WIDTH - (@width * @scalex)
+    end
+    if @y > MyWindow::HEIGHT - (@height * @scaley)
+      @y = MyWindow::HEIGHT - (@height * @scaley)
+    end
   end
 
 end
