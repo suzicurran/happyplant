@@ -6,11 +6,11 @@ require './grass.rb'
 # require 'pry'
 
 class MyWindow < Gosu::Window
-  HEIGHT = 640
-  WIDTH = 480
+  HEIGHT = 480
+  WIDTH = 640
 
   def initialize
-    super(HEIGHT, WIDTH)
+    super(WIDTH, HEIGHT)
     self.caption = 'Make the plant happy!'
     @happy_plant = HappyPlant.new
     @angry_plant = AngryPlant.new

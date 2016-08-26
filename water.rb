@@ -41,5 +41,18 @@ class Water
     end
     @center_x = @x + (@width * @scalex * 0.5)
     @center_y = @y + (@height * @scaley * 0.5)
+
+    if @x < 0
+      @x = 0
+    end
+    if @y < 0
+      @y = 0
+    end
+    if @x > MyWindow::WIDTH - @width
+      @x = MyWindow::WIDTH - @width
+    end
+    if @y > MyWindow::HEIGHT - @height
+      @y = MyWindow::HEIGHT - @height
+    end
   end
 end
