@@ -41,7 +41,10 @@ class Water
     end
     @center_x = @x + (@width * @scalex * 0.5)
     @center_y = @y + (@height * @scaley * 0.5)
+    do_not_go_off_screen
+  end
 
+  def do_not_go_off_screen
     if @x < 0
       @x = 0
     end
@@ -55,4 +58,5 @@ class Water
       @y = MyWindow::HEIGHT - @height
     end
   end
+
 end

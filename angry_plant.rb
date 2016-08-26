@@ -34,7 +34,10 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y # :ishappy
     @center_y = @y + (@height * @scaley * 0.5)
     @angry_x = @x
     @angry_y = @y
+    do_not_go_off_screen
+  end
 
+  def do_not_go_off_screen
     if @x < 0
       @x = 0
     end
