@@ -14,6 +14,7 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y, :radius # :ishappy
     @width = @AngryPlant2.width
     @ishappy = false
     @radius = @width * @scalex / 2
+    @center_offset = (@height * @scaley) / 13
   end
 
   def draw
@@ -32,7 +33,7 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y, :radius # :ishappy
     @frame_count += 1
     
     @center_x = @x + (@width * @scalex * 0.5)
-    @center_y = @y + (@height * @scaley * 0.5)
+    @center_y = @y + (@height * @scaley * 0.5) - @center_offset
     @angry_x = @x
     @angry_y = @y
     do_not_go_off_screen
