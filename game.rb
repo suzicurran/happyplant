@@ -16,11 +16,13 @@ class MyWindow < Gosu::Window
     @angry_plant = AngryPlant.new
     @water = Water.new
     @grass = Grass.new
+    @squishiness_factor = 0.7
+    puts "#{(@water.radius + @angry_plant.radius) * @squishiness_factor}"
   end
 
   def draw
     @grass.draw
-    if Gosu::distance(@angry_plant.center_x, @angry_plant.center_y, @water.center_x, @water.center_y) < 16
+    if Gosu::distance(@angry_plant.center_x, @angry_plant.center_y, @water.center_x, @water.center_y) < (@water.radius + @angry_plant.radius) * @squishiness_factor 
       @happy_plant.draw(@angry_plant)
       # @angry_plant.ishappy = true
     else

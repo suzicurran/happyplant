@@ -1,5 +1,5 @@
 class AngryPlant
-attr_reader :angry_x, :angry_y, :center_x, :center_y # :ishappy
+attr_reader :angry_x, :angry_y, :center_x, :center_y, :radius # :ishappy
 
   def initialize
     @frame_count = 0
@@ -13,6 +13,7 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y # :ishappy
     @height = @AngryPlant2.height
     @width = @AngryPlant2.width
     @ishappy = false
+    @radius = @width * @scalex / 2
   end
 
   def draw

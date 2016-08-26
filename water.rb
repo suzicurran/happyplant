@@ -1,5 +1,5 @@
 class Water
-  attr_reader :center_x, :center_y
+  attr_reader :center_x, :center_y, :radius
 
   def initialize
     @x = 0
@@ -12,6 +12,7 @@ class Water
     @width = @image.width
     @speed = 3 #should be divisible by 3
     @diagonal_pace = @speed / 3 * 2
+    @radius = @width * @scalex / 2
   end
 
   def draw
