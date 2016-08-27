@@ -13,6 +13,8 @@ class Water
     @speed = 3 #should be divisible by 3
     @diagonal_pace = @speed / 3 * 2
     @radius = @width * @scalex / 2
+    @center_x = 0
+    @center_y = 0
   end
 
   def draw

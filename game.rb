@@ -1,9 +1,8 @@
 require 'gosu'
-require './happy_plant.rb'
 require './angry_plant.rb'
 require './water.rb'
 require './grass.rb'
-# require 'pry'
+require 'pry'
 
 class MyWindow < Gosu::Window
   HEIGHT = 480
@@ -12,28 +11,30 @@ class MyWindow < Gosu::Window
   def initialize
     super(WIDTH, HEIGHT)
     self.caption = 'Make the plant happy!'
-    @happy_plant = HappyPlant.new
     @angry_plant = AngryPlant.new
     @water = Water.new
     @grass = Grass.new
     @squishiness_factor = 0.7
-    puts "#{(@water.radius + @angry_plant.radius) * @squishiness_factor}"
   end
 
   def draw
     @grass.draw
-    if Gosu::distance(@angry_plant.center_x, @angry_plant.center_y, @water.center_x, @water.center_y) < (@water.radius + @angry_plant.radius) * @squishiness_factor 
-      @happy_plant.draw(@angry_plant)
-      # @angry_plant.ishappy = true
-    else
-      @angry_plant.draw
+    if !are_colliding?(@angry_plant, @water)
       @water.draw
     end
+    @angry_plant.draw
   end
 
   def update
-      @angry_plant.update
-      @water.update
+    if are_colliding?(@angry_plant, @water)
+      @angry_plant.make_happy
+    end
+    @angry_plant.update
+    @water.update
+  end
+
+  def are_colliding?(object1, object2)
+    Gosu::distance(object1.center_x, object1.center_y, object2.center_x, @water.center_y) < (@water.radius + object1.radius) * @squishiness_factor 
   end
 end
 
