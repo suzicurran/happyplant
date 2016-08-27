@@ -6,28 +6,26 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y, :radius # :ishappy
     @x = 20
     @y = 20
     @z = 1
-    @scalex = 0.1
-    @scaley = 0.1
+    @scale = 0.1
     @AngryPlant1 = Gosu::Image.new("images/angryplant_1.png")
     @AngryPlant2 =Gosu::Image.new("images/angryplant_2.png")
     @happy_image = Gosu::Image.new("images/happyplant.png")
     @height = @AngryPlant2.height
     @width = @AngryPlant2.width
-    @radius = @width * @scalex / 2
-    @center_offset = (@height * @scaley) / 13
+    @radius = @width * @scale / 2
+    @center_offset = (@height * @scale) / 13
     @is_happy = false
-    @center_x = @x + (@width * @scalex * 0.5)
-    @center_y = @y + (@height * @scaley * 0.5) - @center_offset
+    recalc_center
   end
 
   def draw
     if @is_happy
-      @happy_image.draw(@x, @y, @z, @scalex, @scaley)
+      @happy_image.draw(@x, @y, @z, @scale, @scale)
     else
       if (@frame_count % 16).between?(0, 7)
-        @AngryPlant2.draw(@x, @y, @z, @scalex, @scaley)
+        @AngryPlant2.draw(@x, @y, @z, @scale, @scale)
       else
-        @AngryPlant1.draw(@x, @y, @z, @scalex, @scaley)
+        @AngryPlant1.draw(@x, @y, @z, @scale, @scale)
       end
     end
   end
@@ -39,8 +37,7 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y, :radius # :ishappy
     end
     @frame_count += 1
     
-    @center_x = @x + (@width * @scalex * 0.5)
-    @center_y = @y + (@height * @scaley * 0.5) - @center_offset
+    recalc_center
     @angry_x = @x
     @angry_y = @y
     do_not_go_off_screen
@@ -57,12 +54,17 @@ attr_reader :angry_x, :angry_y, :center_x, :center_y, :radius # :ishappy
     if @y < 0
       @y = 0
     end
-    if @x > MyWindow::WIDTH - (@width * @scalex)
-      @x = MyWindow::WIDTH - (@width * @scalex)
+    if @x > MyWindow::WIDTH - (@width * @scale)
+      @x = MyWindow::WIDTH - (@width * @scale)
     end
-    if @y > MyWindow::HEIGHT - (@height * @scaley)
-      @y = MyWindow::HEIGHT - (@height * @scaley)
+    if @y > MyWindow::HEIGHT - (@height * @scale)
+      @y = MyWindow::HEIGHT - (@height * @scale)
     end
+  end
+
+  def recalc_center
+    @center_x = @x + (@width * @scale * 0.5)
+    @center_y = @y + (@height * @scale * 0.5) - @center_offset
   end
 
 end

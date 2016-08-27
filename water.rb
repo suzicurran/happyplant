@@ -5,20 +5,18 @@ class Water
     @x = 0
     @y = 0
     @z = 1
-    @scalex = 1
-    @scaley = 1
+    @scale = 1
     @image = Gosu::Image.new("images/water.png")
     @height = @image.height
     @width = @image.width
     @speed = 3 #should be divisible by 3
     @diagonal_pace = @speed / 3 * 2
-    @radius = @width * @scalex / 2
-    @center_x = 0
-    @center_y = 0
+    @radius = @width * @scale / 2
+    recalc_center
   end
 
   def draw
-    @image.draw(@x, @y, @z, @scalex, @scaley)
+    @image.draw(@x, @y, @z, @scale, @scale)
   end
 
   def update
@@ -43,8 +41,7 @@ class Water
     elsif Gosu::button_down? Gosu::KbDown
       @y += @speed
     end
-    @center_x = @x + (@width * @scalex * 0.5)
-    @center_y = @y + (@height * @scaley * 0.5)
+    recalc_center
     do_not_go_off_screen
   end
 
@@ -61,6 +58,11 @@ class Water
     if @y > MyWindow::HEIGHT - @height
       @y = MyWindow::HEIGHT - @height
     end
+  end
+
+  def recalc_center
+    @center_x = @x + (@width * @scale * 0.5)
+    @center_y = @y + (@height * @scale * 0.5)
   end
 
 end
