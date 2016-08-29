@@ -1,6 +1,6 @@
 require './game_object_helpers'
 class AngryPlant
-  attr_reader :angry_x, :angry_y, :center_x, :center_y, :radius # :ishappy
+  attr_reader :x, :y, :center_x, :center_y, :radius # :ishappy
   include GameObjectHelpers
 
   def initialize
@@ -40,8 +40,6 @@ class AngryPlant
     @frame_count += 1
 
     recalc_center
-    @angry_x = @x
-    @angry_y = @y
     do_not_go_off_screen
   end
 
