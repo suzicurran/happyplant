@@ -9,11 +9,11 @@ class AngryPlant
     @y = 20
     @z = 1
     @scale = 0.1
-    @AngryPlant1 = Gosu::Image.new("images/angryplant_1.png")
-    @AngryPlant2 = Gosu::Image.new("images/angryplant_2.png")
+    @angry_image_1 = Gosu::Image.new("images/angryplant_1.png")
+    @angry_image_2 = Gosu::Image.new("images/angryplant_2.png")
     @happy_image = Gosu::Image.new("images/happyplant.png")
-    @height = @AngryPlant2.height
-    @width = @AngryPlant2.width
+    @height = @angry_image_2.height
+    @width = @angry_image_2.width
     @radius = @width * @scale / 2
     @center_offset = (@height * @scale) / 13
     @is_happy = false
@@ -25,9 +25,9 @@ class AngryPlant
       @happy_image.draw(@x, @y, @z, @scale, @scale)
     else
       if (@frame_count % 16).between?(0, 7)
-        @AngryPlant2.draw(@x, @y, @z, @scale, @scale)
+        @angry_image_2.draw(@x, @y, @z, @scale, @scale)
       else
-        @AngryPlant1.draw(@x, @y, @z, @scale, @scale)
+        @angry_image_1.draw(@x, @y, @z, @scale, @scale)
       end
     end
   end
