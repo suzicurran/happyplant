@@ -49,9 +49,4 @@ class AngryPlant
     @is_happy = true
   end
 
-  def recalc_center
-    @center_x = @x + (@width * @scale * 0.5)
-    @center_y = @y + (@height * @scale * 0.5) - @center_offset
-  end
-
 end
