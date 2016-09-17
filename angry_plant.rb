@@ -37,11 +37,11 @@ class AngryPlant
 
   def update
     if ((@frame_count % 16).between?(0, 3)) && @is_happy == false
-      @temp_x = rand(-@speed..@speed)
-      @temp_y = rand(-@speed..@speed)
+      @heading_x = rand(-@speed..@speed)
+      @heading_y = rand(-@speed..@speed)
     elsif @is_happy == false
-      @x += @temp_x
-      @y += @temp_y
+      @x += @heading_x
+      @y += @heading_y
     end
     @frame_count += 1
 
