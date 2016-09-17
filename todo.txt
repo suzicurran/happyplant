@@ -1,14 +1,14 @@
 add image credits
 use hasu for faster reset
-reset bubble position after plant gets watered
 make sad plant
 make bubble gen animation
 turn happy plants into sad plants when over watered
 more refactoring
 victory screen!
-generate new plants throughout up to some number of plants
-increase speed of plants with each generation
+plants satisfied count
+add power ups?
+
+cap number of plants?
 smarter plant movement
-smoother plant movement
 ???
 profit

@@ -2,6 +2,7 @@ require 'gosu'
 require './angry_plant.rb'
 require './water.rb'
 require './grass.rb'
+require './game_over.rb'
 require 'pry'
 
 class MyWindow < Gosu::Window
@@ -15,16 +16,24 @@ class MyWindow < Gosu::Window
     @angry_plants << AngryPlant.new
     @water = Water.new
     @grass = Grass.new
+    @game_over = GameOver.new
     @squishiness_factor = 0.7
+    @happy_plants_required = 2
+    @victory = false
   end
 
   def draw
-    @grass.draw
-    @angry_plants.each do |plant|
-      if !are_colliding?(plant, @water)
-        @water.draw
+    if @victory
+      self.caption = 'Congratulations!'
+      @game_over.draw
+    else
+      @grass.draw
+      @angry_plants.each do |plant|
+        if !are_colliding?(plant, @water)
+          @water.draw
+        end
+        plant.draw
       end
-      plant.draw
     end
   end
 
@@ -42,6 +51,10 @@ class MyWindow < Gosu::Window
       plant.update
     end
     @water.update
+    @happiness_number = @angry_plants.select{|plant| plant.is_happy}.count
+    if @happiness_number >= @happy_plants_required
+      @victory = true
+    end
   end
 
   def are_colliding?(object1, object2)
