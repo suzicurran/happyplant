@@ -2,14 +2,14 @@ class Grass
 
 	def initialize
 		@image = Gosu::Image.new("images/grass.png")
-	    @height = @image.height
-    	@width = @image.width
-    	@rowcount = 0
-    	@columncount = 0
-    	@totalrows = (MyWindow::HEIGHT / @height) + 1
-    	@totalcolumns = (MyWindow::WIDTH / @width) + 1
-    	@xcoords = []
-    	@ycoords = []
+    @height = @image.height
+  	@width = @image.width
+  	@rowcount = 0
+  	@columncount = 0
+  	@totalrows = (MyWindow::HEIGHT / @height) + 1
+  	@totalcolumns = (MyWindow::WIDTH / @width) + 1
+  	@xcoords = []
+  	@ycoords = []
 
 		until @rowcount > @totalrows do
 			until @columncount > @totalcolumns do
