@@ -1,6 +1,6 @@
 require './game_object_helpers'
 class AngryPlant
-  attr_reader :x, :y, :center_x, :center_y, :radius # :ishappy
+  attr_reader :center_x, :center_y, :radius
   include GameObjectHelpers
 
   def initialize
@@ -33,7 +33,7 @@ class AngryPlant
   end
 
   def update
-    if ((@frame_count % 16).between?(0, 3)) # and (@ishappy == false)
+    if ((@frame_count % 16).between?(0, 3)) && @is_happy == false
       @x += rand(-5..5)
       @y += rand(-5..5)
     end
