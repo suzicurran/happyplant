@@ -1,16 +1,19 @@
-require 'gosu'
-require './angry_plant.rb'
-require './water.rb'
-require './grass.rb'
-require './game_over.rb'
+require 'hasu'
+Hasu.load './angry_plant.rb'
+Hasu.load './water.rb'
+Hasu.load './grass.rb'
+Hasu.load './game_over.rb'
 require 'pry'
 
-class MyWindow < Gosu::Window
+class MyWindow < Hasu::Window
   HEIGHT = 480
   WIDTH = 640
 
   def initialize
     super(WIDTH, HEIGHT)
+  end
+
+  def reset
     self.caption = 'Make the plant happy!'
     @angry_plants = []
     @angry_plants << AngryPlant.new
@@ -62,5 +65,4 @@ class MyWindow < Gosu::Window
   end
 end
 
-@window = MyWindow.new
-@window.show
+MyWindow.run

@@ -4,11 +4,8 @@ make sad plant
 make bubble gen animation
 turn happy plants into sad plants when over watered
 more refactoring
-victory screen!
 plants satisfied count
 add power ups?
-
-cap number of plants?
 smarter plant movement
 ???
 profit
