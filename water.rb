@@ -1,5 +1,8 @@
+require './game_object_helpers'
+
 class Water
   attr_reader :center_x, :center_y, :radius
+  include GameObjectHelpers
 
   def initialize
     @x = 0
@@ -12,6 +15,7 @@ class Water
     @speed = 3 #should be divisible by 3
     @diagonal_pace = @speed / 3 * 2
     @radius = @width * @scale / 2
+    @center_offset = 0
     recalc_center
   end
 
@@ -43,26 +47,6 @@ class Water
     end
     recalc_center
     do_not_go_off_screen
-  end
-
-  def do_not_go_off_screen
-    if @x < 0
-      @x = 0
-    end
-    if @y < 0
-      @y = 0
-    end
-    if @x > MyWindow::WIDTH - @width
-      @x = MyWindow::WIDTH - @width
-    end
-    if @y > MyWindow::HEIGHT - @height
-      @y = MyWindow::HEIGHT - @height
-    end
-  end
-
-  def recalc_center
-    @center_x = @x + (@width * @scale * 0.5)
-    @center_y = @y + (@height * @scale * 0.5)
   end
 
 end
