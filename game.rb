@@ -40,7 +40,7 @@ class MyWindow < Gosu::Window
   end
 
   def are_colliding?(object1, object2)
-    Gosu::distance(object1.center_x, object1.center_y, object2.center_x, @water.center_y) < (@water.radius + object1.radius) * @squishiness_factor
+    Gosu::distance(object1.center_x, object1.center_y, object2.center_x, object2.center_y) < (object2.radius + object1.radius) * @squishiness_factor
   end
 end
 
