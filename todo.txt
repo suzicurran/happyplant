@@ -1,5 +1,4 @@
 add image credits
-use hasu for faster reset
 make sad plant
 make bubble gen animation
 turn happy plants into sad plants when over watered
