@@ -1,12 +1,14 @@
 require './game_object_helpers'
 class AngryPlant
-  attr_reader :center_x, :center_y, :radius
+  attr_reader :center_x, :center_y, :radius, :is_happy
+  attr_accessor :speed
   include GameObjectHelpers
 
   def initialize
     @frame_count = 0
-    @x = 20
-    @y = 20
+    @speed = 3
+    @x = rand(0..MyWindow::WIDTH)
+    @y = rand(0..MyWindow::HEIGHT)
     @z = 1
     @scale = 0.1
     @angry_image_1 = Gosu::Image.new("images/angryplant_1.png")
@@ -18,6 +20,7 @@ class AngryPlant
     @center_offset = (@height * @scale) / 13
     @is_happy = false
     recalc_center
+    do_not_go_off_screen
   end
 
   def draw
@@ -34,8 +37,11 @@ class AngryPlant
 
   def update
     if ((@frame_count % 16).between?(0, 3)) && @is_happy == false
-      @x += rand(-5..5)
-      @y += rand(-5..5)
+      @temp_x = rand(-@speed..@speed)
+      @temp_y = rand(-@speed..@speed)
+    elsif @is_happy == false
+      @x += @temp_x
+      @y += @temp_y
     end
     @frame_count += 1
 
