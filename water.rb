@@ -2,6 +2,7 @@ require './game_object_helpers'
 
 class Water
   attr_reader :center_x, :center_y, :radius
+  attr_accessor :x, :y
   include GameObjectHelpers
 
   def initialize
