@@ -31,7 +31,13 @@ class MyWindow < Gosu::Window
   def update
     @angry_plants.each do |plant|
       if are_colliding?(plant, @water)
-        plant.make_happy
+        if !plant.is_happy
+          @angry_plants << AngryPlant.new
+          plant.make_happy
+          @water.x = 20
+          @water.y = 20
+          @angry_plants.last.speed += 3
+        end
       end
       plant.update
     end
