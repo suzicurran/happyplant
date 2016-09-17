@@ -13,8 +13,8 @@ class Grass
 
 		until @rowcount > @totalrows do
 			until @columncount > @totalcolumns do
-				@xcoords.push(@columncount*@width)
-				@ycoords.push(@rowcount*@height)
+				@xcoords << (@columncount*@width)
+				@ycoords << (@rowcount*@height)
 				@columncount += 1
 			end
 			@columncount = 0

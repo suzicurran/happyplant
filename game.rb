@@ -11,8 +11,8 @@ class MyWindow < Gosu::Window
   def initialize
     super(WIDTH, HEIGHT)
     self.caption = 'Make the plant happy!'
-    @angry_plant = AngryPlant.new
-    @angry_plant2 = AngryPlant.new
+    @angry_plants = []
+    @angry_plants << AngryPlant.new
     @water = Water.new
     @grass = Grass.new
     @squishiness_factor = 0.7
@@ -20,22 +20,21 @@ class MyWindow < Gosu::Window
 
   def draw
     @grass.draw
-    if !are_colliding?(@angry_plant, @water)
-      @water.draw
+    @angry_plants.each do |plant|
+      if !are_colliding?(plant, @water)
+        @water.draw
+      end
+      plant.draw
     end
-    @angry_plant.draw
-    @angry_plant2.draw
   end
 
   def update
-    if are_colliding?(@angry_plant, @water)
-      @angry_plant.make_happy
+    @angry_plants.each do |plant|
+      if are_colliding?(plant, @water)
+        plant.make_happy
+      end
+      plant.update
     end
-    @angry_plant.update
-    if are_colliding?(@angry_plant2, @water)
-      @angry_plant2.make_happy
-    end
-    @angry_plant2.update
     @water.update
   end
 
