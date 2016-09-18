@@ -21,7 +21,7 @@ class MyWindow < Hasu::Window
     @grass = Grass.new
     @game_over = GameOver.new
     @squishiness_factor = 0.7
-    @happy_plants_required = 2
+    @happy_plants_required = 10
     @victory = false
   end
 
